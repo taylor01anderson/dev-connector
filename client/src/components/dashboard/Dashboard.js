@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
 import { getCurrentProfile } from '../../actions/profile';
+import Alert from '../layout/Alert';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -20,6 +21,7 @@ const Dashboard = ({
   ) : (
     <Fragment>
       <div className="container">
+        <Alert />
         <h1 className="large text-primary">Dashboard</h1>
         <p className="lead">
           <i className="fas fa-user"></i> Welcome {user && user.name}
