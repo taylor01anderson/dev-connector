@@ -1,0 +1,5 @@
+{
+  "watch": ["server.js", "routes", "middleware", "models", "config"],
+  "ignore": ["client/**/*", "node_modules/**/*"],
+  "delay": 1000
+}
