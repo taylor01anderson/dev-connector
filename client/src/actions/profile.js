@@ -36,7 +36,7 @@ export const getCurrentProfile = () => async (dispatch) => {
 export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get('/api/profile/me');
+    const res = await axios.get('/api/profile');
 
     dispatch({
       type: GET_PROFILES,
@@ -118,19 +118,18 @@ export const createProfile =
       if (!edit) {
         navigate('/dashboard');
       }
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.errors) {
-        error.response.data.errors.forEach((err) =>
-          dispatch(setAlert(err.msg, 'danger'))
-        );
-      } else {
-        dispatch(setAlert('Server error', 'danger'));
+    } catch (err) {
+      const errors = err.response?.data?.errors;
+
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
       }
+
       dispatch({
         type: PROFILE_ERROR,
         payload: {
-          msg: error.response ? error.response.statusText : 'Server Error',
-          status: error.response ? error.response.status : 500,
+          msg: err.response?.statusText,
+          status: err.response?.status,
         },
       });
     }
