@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
@@ -28,20 +28,20 @@ const AddExperience = ({ addExperience }) => {
     <Fragment>
       <div className="container">
         <Alert />
-        <h1 class="large text-primary">Add An Experience</h1>
-        <p class="lead">
-          <i class="fas fa-code-branch"></i> Add any developer/programming
+        <h1 className="large text-primary">Add An Experience</h1>
+        <p className="lead">
+          <i className="fas fa-code-branch"></i> Add any developer/programming
           positions that you have had in the past
         </p>
         <small>* = required field</small>
         <form
-          class="form"
+          className="form"
           onSubmit={(e) => {
             e.preventDefault();
             addExperience(formData, navigate);
           }}
         >
-          <div class="form-group">
+          <div className="form-group">
             <input
               type="text"
               placeholder="* Job Title"
@@ -51,7 +51,7 @@ const AddExperience = ({ addExperience }) => {
               required
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
               type="text"
               placeholder="* Company"
@@ -61,7 +61,7 @@ const AddExperience = ({ addExperience }) => {
               required
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
               type="text"
               placeholder="Location"
@@ -70,7 +70,7 @@ const AddExperience = ({ addExperience }) => {
               onChange={(e) => onChange(e)}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <h4>From Date</h4>
             <input
               type="date"
@@ -79,7 +79,7 @@ const AddExperience = ({ addExperience }) => {
               onChange={(e) => onChange(e)}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <h4>To Date</h4>
             <input
               type="date"
@@ -114,8 +114,8 @@ const AddExperience = ({ addExperience }) => {
               placeholder="Job Description"
             ></textarea>
           </div>
-          <input type="submit" class="btn btn-primary my-1" />
-          <a class="btn my-1" href="dashboard.html">
+          <input type="submit" className="btn btn-primary my-1" />
+          <a className="btn my-1" href="/dashboard">
             Go Back
           </a>
         </form>
