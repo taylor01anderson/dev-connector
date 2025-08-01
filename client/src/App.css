@@ -423,11 +423,13 @@ img {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: exp;
+  border: #ccc 1px solid !important;
 }
 .profile-grid .profile-edu {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: edu;
+  border: #ccc 1px solid !important;
 }
 .profile-grid .profile-exp > div,
 .profile-grid .profile-edu > div {
