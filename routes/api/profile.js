@@ -176,7 +176,7 @@ router.put(
     auth,
     [
       check('school', 'School is required').not().isEmpty(),
-      check('degree', 'degree required').not().isEmpty(),
+      check('degree', 'Degree is required').not().isEmpty(),
       check('fieldofstudy', 'Field of study is required').not().isEmpty(),
       check('from', 'From date is required').not().isEmpty(),
     ],
@@ -215,7 +215,7 @@ router.put(
 );
 
 // @route  Delete api/profile/education/:edu_id
-// @desc   Delete education frdu profile
+// @desc   Delete education from profile
 // @access Private
 
 router.delete('/education/:edu_id', auth, async (req, res) => {

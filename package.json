@@ -8,7 +8,7 @@
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODuCITON=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -26,8 +26,8 @@
     "ajv-keywords": "^5.1.0",
     "bcryptjs": "^3.0.2",
     "config": "^4.0.1",
-    "express": "^5.1.0",
-    "express-validator": "^7.2.1",
+    "express": "^4.21.2",
+    "express-validator": "^6.15.0",
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.4",
