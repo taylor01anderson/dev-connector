@@ -11,6 +11,7 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
+  showActions = true,
 }) => {
   // Define consistent button style
   const buttonStyle = {
@@ -33,45 +34,53 @@ const PostItem = ({
 
       <div>
         <p className="my-1">{text}</p>
-        <button
-          onClick={() => addLike(_id)}
-          className="btn"
-          style={buttonStyle}
-        >
-          <i className="fas fa-thumbs-up"></i> <span>{likes.length}</span>
-        </button>
-        <button
-          onClick={() => removeLike(_id)}
-          className="btn"
-          style={buttonStyle}
-        >
-          <i className="fas fa-thumbs-down"></i>
-        </button>
-        <Link
-          to={`/post/${_id}`}
-          className="btn btn-primary"
-          style={buttonStyle}
-        >
-          Discussion{' '}
-          {comments.length > 0 && (
-            <span className="comment-count">{comments.length}</span>
-          )}
-        </Link>
-        {auth.isAuthenticated &&
-          auth.loading === false &&
-          user === auth.user._id && (
+        {showActions && (
+          <Fragment>
             <button
-              onClick={(e) => deletePost(_id)}
-              type="button"
-              className="btn btn-danger"
+              onClick={() => addLike(_id)}
+              className="btn"
               style={buttonStyle}
             >
-              <i className="fas fa-times"></i>
+              <i className="fas fa-thumbs-up"></i> <span>{likes.length}</span>
             </button>
-          )}
+            <button
+              onClick={() => removeLike(_id)}
+              className="btn"
+              style={buttonStyle}
+            >
+              <i className="fas fa-thumbs-down"></i>
+            </button>
+            <Link
+              to={`/posts/${_id}`}
+              className="btn btn-primary"
+              style={buttonStyle}
+            >
+              Discussion{' '}
+              {comments.length > 0 && (
+                <span className="comment-count">{comments.length}</span>
+              )}
+            </Link>
+            {auth.isAuthenticated &&
+              auth.loading === false &&
+              user === auth.user._id && (
+                <button
+                  onClick={(e) => deletePost(_id)}
+                  type="button"
+                  className="btn btn-danger"
+                  style={buttonStyle}
+                >
+                  <i className="fas fa-times"></i>
+                </button>
+              )}
+          </Fragment>
+        )}
       </div>
     </div>
   );
+};
+
+PostItem.defaultProps = {
+  showActions: true,
 };
 
 PostItem.propTypes = {
